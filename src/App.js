@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="container">
       <header className="header">
-        <h1>Dr. Charles Plaisimond </h1>
+        <h1> Charles Plaisimond </h1>
         <p className="title"> Organizational Behavior Phd Candidate| Research Scientist</p>
         <div className="contact">
           <a href="mailto:charles.plaisimond@gmail.com">Email</a> | 
