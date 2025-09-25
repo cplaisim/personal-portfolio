@@ -6,7 +6,13 @@ phases:
       nodejs: 18
     commands:
       - npm install
-  
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - chmod +x node_modules/.bin/*
+      - npm cache clean --force
+      - npm install
+      - echo "Dependencies installed successfully"
   build:
     commands:
       - echo "Starting build phase..."
