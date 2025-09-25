@@ -32,9 +32,9 @@ function App() {
         <h1>Dr. Charles Plaisimond </h1>
         <p className="title"> Organizational Behavior Phd Candidate| Research Scientist</p>
         <div className="contact">
-          <a href="mailto:charles.plaisimond@gmail.com">charles@gmail.com</a> | 
-          <a href="https://linkedin.com/in/charlesplaisimond">LinkedIn</a> |
-          <a href="https://github.com/charlesplaisimond">GitHub</a>
+          <a href="mailto:charles.plaisimond@gmail.com">Email</a> | 
+          <a href="https://www.linkedin.com/in/charlesrplaisimond/">LinkedIn</a> |
+          <a href="https://github.com/cplaisim">GitHub</a>
         </div>
       </header>
 
