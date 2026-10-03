@@ -1,46 +1,66 @@
-# PhD Portfolio Website
+# Knowledge Graph Portfolio
 
-A minimal React-based personal webpage optimized for AWS S3 hosting.
+A Next.js static-export portfolio whose background is an interactive knowledge
+graph, built from a sanitized snapshot of a Neo4j graph. The exported site never
+connects to Neo4j at runtime and contains no database credentials.
 
-## Setup
+The graph is draggable: nodes can be moved with a mouse or a finger and stay
+where they are dropped. The background switches between black and white, and the
+choice is remembered per visitor.
 
-1. Install dependencies:
+## Local Preview
+
 ```bash
 npm install
+npm run dev
 ```
 
-2. Start development server:
+Open `http://localhost:3000`.
+
+## Refresh the Graph Snapshot
+
+The snapshot comes from the profile graph defined in
+`profile_graph_hierarchy.cypher`, which keys every node on `uid` and carries its
+own `label`, `kind`, `level` and `group`.
+
+Set `NEO4J_PASSWORD` in the shell (optionally `NEO4J_URI`, `NEO4J_USERNAME`),
+then:
+
 ```bash
-npm start
+npm run export:graph
 ```
 
-3. Build for production:
+This writes `public/knowledge-graph.json` as `{ nodes, links }`. It defaults to
+`bolt://127.0.0.1:17688`. Keep credentials in environment variables; never commit
+them.
+
+`npm run export:career-graph` is the older exporter for the fuller career graph
+on port 17687. It writes `public/career-graph.json`, which the site no longer
+reads.
+
+## Build
+
 ```bash
 npm run build
 ```
 
-## AWS S3 Deployment
+Next.js writes the static site to `out/`.
 
-1. Create an S3 bucket with static website hosting enabled
-2. Update bucket name in package.json deploy script
-3. Configure AWS CLI with appropriate credentials
-4. Deploy:
-```bash
-npm run deploy
-```
+## Deploy
 
-## Customization
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which runs
+`npm ci`, `npm run build`, and syncs `out/` to the S3 website bucket. The
+workflow can also be run manually from the Actions tab.
 
-Replace placeholder content in `src/App.js`:
-- Personal information (name, email, etc.)
-- Education details
-- Research projects
-- Publications
-- Contact links
+It needs these repository settings:
 
-## S3 Optimization Features
+| Setting | Kind | Required | Purpose |
+| --- | --- | --- | --- |
+| `AWS_ACCESS_KEY_ID` | secret | yes | IAM user with write access to the bucket |
+| `AWS_SECRET_ACCESS_KEY` | secret | yes | — |
+| `AWS_REGION` | variable | no | Defaults to `us-east-1` |
+| `S3_BUCKET` | variable | no | Defaults to `charlesplaisimond.com` |
 
-- Minimal bundle size
-- Static files only
-- SEO-friendly structure
-- Mobile responsive design
+`buildspec.yml` is the earlier AWS CodeBuild definition of the same steps and is
+kept for the existing CodePipeline. To deploy by hand instead, configure the AWS
+CLI and run `npm run deploy`. Review the local preview before deploying.

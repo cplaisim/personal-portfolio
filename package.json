@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "neo4j-driver": "^6.2.0",
+    "next": "^16.3.8",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-force-graph-2d": "^1.29.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "deploy": "aws s3 sync build/ s3://charles-portfolio-bucket --delete",
+    "dev": "next dev",
+    "start": "next dev",
+    "build": "next build",
+    "export:graph": "node scripts/export-knowledge-graph.mjs",
+    "export:career-graph": "node scripts/export-graph.mjs",
+    "deploy": "aws s3 sync out/ s3://charlesplaisimond.com --delete",
     "update": "npm run build && npm run deploy"
   },
   "browserslist": {

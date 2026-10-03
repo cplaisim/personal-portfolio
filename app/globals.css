@@ -1,0 +1,719 @@
+/* Dark is the default so the first paint matches the component's initial state
+   and the static export cannot flash the wrong theme. */
+:root {
+  --bg: #07070a;
+  --bg-rgb: 7, 7, 10;
+  --ink: #e9eef6;
+  --ink-soft: #98a4b8;
+  --line: rgba(233, 238, 246, 0.17);
+  --footer-bg: rgba(233, 238, 246, 0.06);
+  --coral: #f97362;
+  --font-display: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-ui: Aptos, "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --bg-rgb: 255, 255, 255;
+  --ink: #101827;
+  --ink-soft: #526077;
+  --line: rgba(16, 24, 39, 0.16);
+  --footer-bg: rgba(16, 24, 39, 0.05);
+  --coral: #d4452c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  transition: background-color 320ms ease, color 320ms ease;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+/* ---------- Interactive background ----------
+   The graph sits at the bottom of the stack but still receives pointer and
+   touch events. `touch-action: none` is what lets a finger drag a node instead
+   of scrolling the page, so it is scoped to the canvas alone - the overlay
+   keeps its normal touch behaviour and remains the way to scroll on mobile. */
+.graph-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.graph-canvas canvas {
+  display: block;
+}
+
+.graph-wash {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(var(--bg-rgb), 0.94) 0%,
+    rgba(var(--bg-rgb), 0.74) 32%,
+    rgba(var(--bg-rgb), 0.12) 66%,
+    rgba(var(--bg-rgb), 0) 100%
+  );
+  transition: background 320ms ease;
+}
+
+/* Transparent to the pointer by default, so the graph underneath stays
+   grabbable; interactive bits opt back in below. */
+.overlay {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.overlay a,
+.overlay button,
+.topbar,
+.hero-copy,
+.education-band,
+.about-band,
+.site-footer {
+  pointer-events: auto;
+}
+
+.graph-loading {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+/* ---------- Top bar ---------- */
+/* Sticky rather than fixed, so it keeps its place in the flow and nothing has
+   to be offset to sit beneath it. html{scroll-padding-top} already matches this
+   height, so hash links do not land under the bar. */
+.topbar {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 78px;
+  padding: 0 5.5vw;
+  border-bottom: 1px solid var(--line);
+  background: rgba(var(--bg-rgb), 0.72);
+  backdrop-filter: blur(7px);
+}
+
+.wordmark,
+.topbar nav {
+  display: flex;
+  align-items: center;
+}
+
+.wordmark {
+  gap: 11px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.wordmark-mark {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 12px;
+}
+
+.topbar nav {
+  gap: 24px;
+  font-size: 13px;
+}
+
+.topbar nav a,
+.about-links a,
+.site-footer a {
+  transition: color 160ms ease;
+}
+
+.topbar nav a:hover,
+.about-links a:hover,
+.site-footer a:hover {
+  color: var(--coral);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
+.theme-dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--ink) 0 50%, transparent 50% 100%);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  min-height: min(840px, calc(100svh - 78px));
+  align-content: center;
+  gap: 7vw;
+  padding: 72px 8vw 102px;
+}
+
+/* Kept scrollable and selectable on purpose: on a phone this block is how you
+   swipe the page, since the canvas behind it swallows vertical gestures. */
+.hero-copy {
+  min-width: 0;
+  max-width: 650px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 1.1px;
+}
+
+.hero-copy > .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+.hero h1 {
+  margin: 27px 0 20px;
+  font-family: var(--font-display);
+  font-size: 78px;
+  font-weight: 400;
+  line-height: 0.97;
+}
+
+.title-period {
+  color: var(--coral);
+}
+
+.hero-summary {
+  max-width: 410px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 0 5px;
+  border-bottom: 1px solid currentColor;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.text-link span {
+  color: var(--coral);
+  font-size: 16px;
+}
+
+.text-link-muted {
+  border-color: var(--line);
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.graph-hint {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+.reset-layout {
+  padding: 0 0 3px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 650;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.reset-layout:hover {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
+/* ---------- Education ---------- */
+/* Transparent like the About band, so the graph still reads behind it. */
+.education-band {
+  padding: 56px 8vw 60px;
+  border-top: 1px solid var(--line);
+}
+
+.edu-list {
+  max-width: 1180px;
+  margin: 24px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One rhythm for every row: a fixed year column, then the institution, the
+   award, and the place. Aligning the columns is what makes the entries scan
+   as one set rather than six unrelated cards. */
+.edu-item {
+  display: grid;
+  gap: 2px 28px;
+  align-items: baseline;
+  padding: 17px 0;
+  border-top: 1px solid var(--line);
+  grid-template-columns: 94px minmax(0, 1.05fr) minmax(0, 1.45fr) minmax(0, 0.85fr);
+}
+
+.edu-item:first-child {
+  border-top: 0;
+}
+
+.edu-year {
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.edu-school {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.edu-award,
+.edu-place {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.edu-place {
+  font-size: 13px;
+  text-align: right;
+}
+
+/* ---------- About ---------- */
+/* Transparent, so the graph reads straight through this section. The hairline
+   top border is all that separates it from the hero. It still takes pointer
+   events (see .overlay rules) so the text stays selectable and the page stays
+   swipe-scrollable on touch, where the canvas otherwise claims the gesture. */
+.about-band {
+  padding: 94px 8vw 90px;
+  background: transparent;
+  border-top: 1px solid var(--line);
+}
+
+.about-inner {
+  display: grid;
+  max-width: 1180px;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 12vw;
+  margin: 0 auto;
+}
+
+.about-heading h2 {
+  margin: 13px 0 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.about-copy {
+  align-self: end;
+  max-width: 470px;
+}
+
+.about-copy > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.about-links {
+  display: flex;
+  gap: 24px;
+  margin-top: 23px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.about-links span {
+  color: var(--coral);
+}
+
+/* ---------- Contact ---------- */
+.contact-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.contact-main {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex: 1;
+  align-items: center;
+  padding: 90px 8vw 110px;
+}
+
+.contact-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.contact-main h1 {
+  margin: 27px 0 20px;
+  font-family: var(--font-display);
+  font-size: 68px;
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.contact-summary {
+  max-width: 440px;
+  margin: 0 0 42px;
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.contact-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 1px;
+  list-style: none;
+  background: var(--line);
+  border-block: 1px solid var(--line);
+}
+
+.contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 22px;
+  padding: 14px 2px;
+  background: var(--bg);
+  transition: background-color 320ms ease;
+}
+
+.contact-label {
+  min-width: 78px;
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.contact-value {
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 160ms ease;
+}
+
+a.contact-value:hover {
+  color: var(--coral);
+}
+
+.contact-value span {
+  color: var(--coral);
+}
+
+/* The portrait sits in the lower-right corner of the page. `inset: auto 0 0
+   auto` pins it to that corner; the width is viewport-relative so it scales
+   without ever overlapping the contact details. */
+.contact-portrait {
+  position: absolute;
+  z-index: 0;
+  inset: auto 0 0 auto;
+  width: min(48vw, 620px);
+  margin: 0;
+  pointer-events: none;
+}
+
+.contact-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 2px;
+  /* Fades into the page on both themes instead of ending on a hard edge. */
+  mask-image: linear-gradient(to left, #000 62%, transparent 100%),
+    linear-gradient(to top, #000 62%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to left, #000 62%, transparent 100%),
+    linear-gradient(to top, #000 62%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 8vw;
+  background: var(--footer-bg);
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+
+.site-footer a {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    gap: 4vw;
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  .hero h1 {
+    font-size: 68px;
+  }
+
+  .contact-main h1 {
+    font-size: 56px;
+  }
+
+  .contact-portrait {
+    width: min(52vw, 480px);
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    min-height: 64px;
+    padding: 0 20px;
+  }
+
+  .wordmark {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .wordmark-mark {
+    width: 28px;
+    height: 28px;
+  }
+
+  .topbar nav {
+    gap: 13px;
+    font-size: 11px;
+  }
+
+  .topbar nav a:first-child {
+    display: none;
+  }
+
+  .hero {
+    min-height: calc(100svh - 64px);
+    gap: 28px;
+    padding: 44px 20px 82px;
+  }
+
+  .hero h1 {
+    margin-top: 18px;
+    font-size: 54px;
+  }
+
+  .hero-summary {
+    max-width: 340px;
+    font-size: 15px;
+  }
+
+  .hero-links {
+    gap: 19px;
+    margin-top: 20px;
+  }
+
+  .education-band {
+    padding: 44px 22px 48px;
+  }
+
+  /* The four columns collapse to a stack, with the year leading each entry and
+     the place beneath rather than flush right. */
+  .edu-item {
+    gap: 3px;
+    padding: 15px 0;
+    grid-template-columns: 1fr;
+  }
+
+  .edu-place {
+    text-align: left;
+  }
+
+  .about-band {
+    padding: 65px 22px;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-heading h2 {
+    font-size: 34px;
+  }
+
+  .about-copy > p {
+    font-size: 14px;
+  }
+
+  .site-footer {
+    padding: 16px 22px;
+    font-size: 9px;
+  }
+
+  /* Below this width an absolutely-positioned portrait would sit on top of the
+     contact details, so it returns to the flow underneath them - still aligned
+     right, so it keeps reading as the lower-right corner of the page. */
+  .contact-main {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 48px 20px 0;
+  }
+
+  .contact-main h1 {
+    margin-top: 18px;
+    font-size: 46px;
+  }
+
+  .contact-summary {
+    margin-bottom: 28px;
+    font-size: 15px;
+  }
+
+  .contact-portrait {
+    position: static;
+    width: min(100%, 420px);
+    margin: 44px 0 0 auto;
+  }
+
+  .contact-portrait img {
+    mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+    -webkit-mask-composite: source-over;
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar nav {
+    gap: 9px;
+    font-size: 10px;
+  }
+
+  .theme-toggle {
+    height: 28px;
+    padding: 0 10px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

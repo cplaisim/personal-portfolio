@@ -1,0 +1,56 @@
+# Mirrors the existing CodeBuild protocol in buildspec.yml: install, build the
+# Next.js static export, publish the contents of out/ to the S3 website bucket.
+name: Build and deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# A newer push supersedes an in-flight deploy rather than racing it to the bucket.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and publish to S3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          # Matches runtime-versions.nodejs in buildspec.yml.
+          node-version: 20
+          cache: npm
+
+      # ci, not install: respects package-lock.json exactly and fails loudly if
+      # the lockfile and package.json have drifted apart.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Verify the export looks complete
+        run: |
+          test -f out/index.html
+          test -f out/contact/index.html
+          test -f out/knowledge-graph.json
+          echo "export OK: $(find out -type f | wc -l) files"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+
+      # --delete keeps the bucket an exact mirror of out/, so files removed from
+      # the build are removed from the site.
+      - name: Publish to S3
+        run: aws s3 sync out/ "s3://${{ vars.S3_BUCKET || 'charlesplaisimond.com' }}" --delete

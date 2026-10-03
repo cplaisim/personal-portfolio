@@ -52,8 +52,6 @@ function App() {
           <p> TBD| 2031</p>
           <p>Dissertation: "Your Dissertation Title"</p>
           <p>Babson College | 2016</p>
-          <p>HEC Paris Exchange | 2015 </p>
-          <p>Dartmouth Tuck Business Bridge Program | 2007</p>
           <p>Williams College | 2007</p>
         </div>
       </section>

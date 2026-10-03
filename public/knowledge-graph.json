@@ -1,0 +1,1376 @@
+{
+  "nodes": [
+    {
+      "id": "person",
+      "label": "Charles R. Plaisimond",
+      "kind": "Person",
+      "level": 0,
+      "group": "Person",
+      "color": "#1F2937",
+      "headline": "Workplace strategy, consulting & organizational research"
+    },
+    {
+      "id": "loc-ma",
+      "label": "Massachusetts",
+      "kind": "State",
+      "level": 1,
+      "group": "Location",
+      "color": "#64748B",
+      "current": false,
+      "short": "MA",
+      "country": "USA"
+    },
+    {
+      "id": "loc-ny",
+      "label": "New York",
+      "kind": "State",
+      "level": 1,
+      "group": "Location",
+      "color": "#64748B",
+      "current": false,
+      "short": "NY",
+      "country": "USA"
+    },
+    {
+      "id": "loc-nrw",
+      "label": "North Rhine-Westphalia",
+      "kind": "State",
+      "level": 1,
+      "group": "Location",
+      "color": "#64748B",
+      "current": true,
+      "short": "NRW",
+      "country": "Germany"
+    },
+    {
+      "id": "talent",
+      "label": "Talent",
+      "kind": "Talent",
+      "level": 1,
+      "group": "Talent",
+      "color": "#C2410C"
+    },
+    {
+      "id": "cert-ai-product-design",
+      "label": "AI Product Design",
+      "kind": "Certification",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FDBA74"
+    },
+    {
+      "id": "cert-argus",
+      "label": "Argus Enterprise",
+      "kind": "Certification",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FDBA74"
+    },
+    {
+      "id": "cert-excel-fin-model",
+      "label": "Excel Financial Modeling",
+      "kind": "Certification",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FDBA74"
+    },
+    {
+      "id": "cert-re-investment",
+      "label": "Real Estate Investment Analysis",
+      "kind": "Certification",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FDBA74"
+    },
+    {
+      "id": "ind-nrw-academia",
+      "label": "Academia",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "ind-ny-academia",
+      "label": "Academia",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "ind-ma-academia",
+      "label": "Academia",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "ind-ny-consulting",
+      "label": "Consulting",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Consulting",
+      "color": "#8E6BBF"
+    },
+    {
+      "id": "ind-ma-consulting",
+      "label": "Consulting",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Consulting",
+      "color": "#8E6BBF"
+    },
+    {
+      "id": "ind-ma-finance",
+      "label": "Finance",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Finance",
+      "color": "#2E9E6B"
+    },
+    {
+      "id": "ind-ny-finance",
+      "label": "Finance",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Finance",
+      "color": "#2E9E6B"
+    },
+    {
+      "id": "ind-ny-real-estate",
+      "label": "Real Estate",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "ind-ma-real-estate",
+      "label": "Real Estate",
+      "kind": "Industry",
+      "level": 2,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "lang-en",
+      "label": "English",
+      "kind": "Language",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FB923C",
+      "proficiency": "C2"
+    },
+    {
+      "id": "lang-fr",
+      "label": "French",
+      "kind": "Language",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FB923C",
+      "proficiency": "C1–C2"
+    },
+    {
+      "id": "lang-de",
+      "label": "German",
+      "kind": "Language",
+      "level": 2,
+      "group": "Talent",
+      "color": "#FB923C",
+      "proficiency": "B1"
+    },
+    {
+      "id": "skill-ai-product",
+      "label": "AI Product Development",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-xfn-leadership",
+      "label": "Cross-Functional Leadership",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Leadership & Delivery"
+    },
+    {
+      "id": "skill-data-strategy",
+      "label": "Data Strategy & Analytics",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-digital-transf",
+      "label": "Digital Transformation",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Strategy"
+    },
+    {
+      "id": "skill-due-diligence",
+      "label": "Due Diligence & M&A Research",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Finance"
+    },
+    {
+      "id": "skill-event-mgmt",
+      "label": "Event Management",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Leadership & Delivery"
+    },
+    {
+      "id": "skill-facility",
+      "label": "Facility Management",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Real Estate"
+    },
+    {
+      "id": "skill-controlling",
+      "label": "Financial Controlling",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Finance"
+    },
+    {
+      "id": "skill-fin-modeling",
+      "label": "Financial Modeling",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Finance"
+    },
+    {
+      "id": "skill-intercultural",
+      "label": "Intercultural Communication",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "People"
+    },
+    {
+      "id": "skill-keras",
+      "label": "Keras",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-knowledge-mgmt",
+      "label": "Knowledge Management",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Strategy"
+    },
+    {
+      "id": "skill-genai",
+      "label": "Machine Learning & GenAI (RAG)",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-market-research",
+      "label": "Market Research",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Strategy"
+    },
+    {
+      "id": "skill-mixed-methods",
+      "label": "Mixed-Methods Research",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Research"
+    },
+    {
+      "id": "skill-org-behavior",
+      "label": "Organizational Behavior",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Research"
+    },
+    {
+      "id": "skill-partnerships",
+      "label": "Partnership Development",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "People"
+    },
+    {
+      "id": "skill-project-mgmt",
+      "label": "Project Management",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Leadership & Delivery"
+    },
+    {
+      "id": "skill-pytorch",
+      "label": "PyTorch",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-python",
+      "label": "Python",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-react",
+      "label": "React",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-recruiting",
+      "label": "Recruiting & Training",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "People"
+    },
+    {
+      "id": "skill-research-finance",
+      "label": "Research Accounting",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Finance"
+    },
+    {
+      "id": "skill-sql",
+      "label": "SQL",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Data & AI"
+    },
+    {
+      "id": "skill-stakeholder-mgmt",
+      "label": "Stakeholder Management",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Leadership & Delivery"
+    },
+    {
+      "id": "skill-strategy",
+      "label": "Strategy Consulting",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Strategy"
+    },
+    {
+      "id": "skill-student-advising",
+      "label": "Student Advising",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "People"
+    },
+    {
+      "id": "skill-team-leadership",
+      "label": "Team Leadership",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Leadership & Delivery"
+    },
+    {
+      "id": "skill-workplace",
+      "label": "Workplace Strategy",
+      "kind": "Skill",
+      "level": 2,
+      "group": "Talent",
+      "color": "#F97316",
+      "category": "Real Estate"
+    },
+    {
+      "id": "org-babson",
+      "label": "Babson College",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Consulting",
+      "color": "#8E6BBF"
+    },
+    {
+      "id": "org-cbre",
+      "label": "CBRE",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "org-cic",
+      "label": "Cambridge Innovation Center",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "org-capstone",
+      "label": "Capstone Partners",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Finance",
+      "color": "#2E9E6B"
+    },
+    {
+      "id": "org-happy-caterpillars",
+      "label": "Happy Caterpillars LLC",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "org-highline",
+      "label": "Highline Residential",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "org-masschallenge",
+      "label": "MassChallenge",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Consulting",
+      "color": "#8E6BBF"
+    },
+    {
+      "id": "org-mit",
+      "label": "Massachusetts Institute of Technology",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "org-maxim",
+      "label": "Maxim Group",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Finance",
+      "color": "#2E9E6B"
+    },
+    {
+      "id": "org-tlgg",
+      "label": "TLGG",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Consulting",
+      "color": "#8E6BBF"
+    },
+    {
+      "id": "org-paderborn",
+      "label": "Universität Paderborn",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Academia",
+      "color": "#4F7CAC"
+    },
+    {
+      "id": "org-vicus",
+      "label": "Vicus Partners",
+      "kind": "Organization",
+      "level": 3,
+      "group": "Real Estate",
+      "color": "#D98A3A"
+    },
+    {
+      "id": "r08",
+      "label": "Associate, Operations",
+      "kind": "Role",
+      "level": 4,
+      "group": "Real Estate",
+      "color": "#D98A3A",
+      "period": "May 2016 – Sep 2017",
+      "current": false
+    },
+    {
+      "id": "r10",
+      "label": "Consultant, Babson Consulting Alliance",
+      "kind": "Role",
+      "level": 4,
+      "group": "Finance",
+      "color": "#2E9E6B",
+      "period": "2015 – 2016",
+      "current": false
+    },
+    {
+      "id": "r01",
+      "label": "Doctoral Candidate",
+      "kind": "Role",
+      "level": 4,
+      "group": "Academia",
+      "color": "#4F7CAC",
+      "period": "Apr 2026 – Present",
+      "current": true
+    },
+    {
+      "id": "r12",
+      "label": "Finance Assistant, CSAIL",
+      "kind": "Role",
+      "level": 4,
+      "group": "Academia",
+      "color": "#4F7CAC",
+      "period": "Sep 2011 – May 2013",
+      "current": false
+    },
+    {
+      "id": "r02",
+      "label": "Owner & Operator",
+      "kind": "Role",
+      "level": 4,
+      "group": "Academia",
+      "color": "#4F7CAC",
+      "period": "Jul 2021 – Jul 2025",
+      "current": false
+    },
+    {
+      "id": "r06",
+      "label": "Real Estate Agent",
+      "kind": "Role",
+      "level": 4,
+      "group": "Real Estate",
+      "color": "#D98A3A",
+      "current": false,
+      "dataNote": "Sheet dates inconsistent (end before start). Fill in period before publishing."
+    },
+    {
+      "id": "r07",
+      "label": "Research Assistant, Entrepreneurship Education",
+      "kind": "Role",
+      "level": 4,
+      "group": "Consulting",
+      "color": "#8E6BBF",
+      "period": "2014 – 2016",
+      "current": false
+    },
+    {
+      "id": "r11",
+      "label": "Research Assistant, MBA",
+      "kind": "Role",
+      "level": 4,
+      "group": "Academia",
+      "color": "#4F7CAC",
+      "period": "2014 – 2016",
+      "current": false
+    },
+    {
+      "id": "r09",
+      "label": "Senior Fellow, Partnerships",
+      "kind": "Role",
+      "level": 4,
+      "group": "Consulting",
+      "color": "#8E6BBF",
+      "period": "Jun – Aug 2015",
+      "current": false
+    },
+    {
+      "id": "r05",
+      "label": "Strategy Consultant",
+      "kind": "Role",
+      "level": 4,
+      "group": "Consulting",
+      "color": "#8E6BBF",
+      "period": "Apr 2018 – May 2019",
+      "current": false
+    },
+    {
+      "id": "r04",
+      "label": "Tenant Representative",
+      "kind": "Role",
+      "level": 4,
+      "group": "Real Estate",
+      "color": "#D98A3A",
+      "period": "Sep 2017 – Jan 2020",
+      "current": false
+    },
+    {
+      "id": "r13",
+      "label": "Wealth Management Trainee",
+      "kind": "Role",
+      "level": 4,
+      "group": "Finance",
+      "color": "#2E9E6B",
+      "current": false,
+      "dataNote": "No dates or tasks in sheet. Fill in or hide before publishing."
+    },
+    {
+      "id": "r03",
+      "label": "Workplace Strategy Manager",
+      "kind": "Role",
+      "level": 4,
+      "group": "Real Estate",
+      "color": "#D98A3A",
+      "period": "Jan 2020 – May 2021",
+      "current": false
+    }
+  ],
+  "links": [
+    {
+      "source": "talent",
+      "target": "cert-ai-product-design",
+      "type": "CERTIFIED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "cert-argus",
+      "type": "CERTIFIED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "cert-excel-fin-model",
+      "type": "CERTIFIED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "cert-re-investment",
+      "type": "CERTIFIED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ma",
+      "target": "ind-ma-academia",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ma",
+      "target": "ind-ma-consulting",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ma",
+      "target": "ind-ma-finance",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ma",
+      "target": "ind-ma-real-estate",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-nrw",
+      "target": "ind-nrw-academia",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ny",
+      "target": "ind-ny-academia",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ny",
+      "target": "ind-ny-consulting",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ny",
+      "target": "ind-ny-finance",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "loc-ny",
+      "target": "ind-ny-real-estate",
+      "type": "HAS_INDUSTRY",
+      "crossLink": false
+    },
+    {
+      "source": "org-babson",
+      "target": "r07",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-babson",
+      "target": "r11",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-capstone",
+      "target": "r10",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-cbre",
+      "target": "r03",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-cic",
+      "target": "r08",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-happy-caterpillars",
+      "target": "r02",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-highline",
+      "target": "r06",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-masschallenge",
+      "target": "r09",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-maxim",
+      "target": "r13",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-mit",
+      "target": "r12",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-paderborn",
+      "target": "r01",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-tlgg",
+      "target": "r05",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "org-vicus",
+      "target": "r04",
+      "type": "HAS_ROLE",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-ai-product",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-controlling",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-data-strategy",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-digital-transf",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-due-diligence",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-event-mgmt",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-facility",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-fin-modeling",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-genai",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-intercultural",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-keras",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-knowledge-mgmt",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-market-research",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-mixed-methods",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-org-behavior",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-partnerships",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-project-mgmt",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-python",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-pytorch",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-react",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-recruiting",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-research-finance",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-sql",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-stakeholder-mgmt",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-strategy",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-student-advising",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-team-leadership",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-workplace",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "skill-xfn-leadership",
+      "type": "HAS_SKILL",
+      "crossLink": false
+    },
+    {
+      "source": "person",
+      "target": "talent",
+      "type": "HAS_TALENT",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-academia",
+      "target": "org-babson",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-academia",
+      "target": "org-mit",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-consulting",
+      "target": "org-babson",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-consulting",
+      "target": "org-masschallenge",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-finance",
+      "target": "org-capstone",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ma-real-estate",
+      "target": "org-cic",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-nrw-academia",
+      "target": "org-paderborn",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-academia",
+      "target": "org-happy-caterpillars",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-consulting",
+      "target": "org-tlgg",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-finance",
+      "target": "org-maxim",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-real-estate",
+      "target": "org-cbre",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-real-estate",
+      "target": "org-highline",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "ind-ny-real-estate",
+      "target": "org-vicus",
+      "type": "INCLUDES",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "lang-de",
+      "type": "SPEAKS",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "lang-en",
+      "type": "SPEAKS",
+      "crossLink": false
+    },
+    {
+      "source": "talent",
+      "target": "lang-fr",
+      "type": "SPEAKS",
+      "crossLink": false
+    },
+    {
+      "source": "skill-ai-product",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-controlling",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-data-strategy",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-data-strategy",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-digital-transf",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-due-diligence",
+      "target": "r10",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-event-mgmt",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-event-mgmt",
+      "target": "r09",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-facility",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-facility",
+      "target": "r08",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-fin-modeling",
+      "target": "r04",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-genai",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-intercultural",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-intercultural",
+      "target": "r09",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-knowledge-mgmt",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-market-research",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-market-research",
+      "target": "r04",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-market-research",
+      "target": "r06",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-market-research",
+      "target": "r10",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-mixed-methods",
+      "target": "r01",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-mixed-methods",
+      "target": "r11",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-org-behavior",
+      "target": "r01",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-partnerships",
+      "target": "r09",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-project-mgmt",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-project-mgmt",
+      "target": "r08",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-project-mgmt",
+      "target": "r12",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-recruiting",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-recruiting",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-research-finance",
+      "target": "r12",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-sql",
+      "target": "r04",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-stakeholder-mgmt",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-stakeholder-mgmt",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-stakeholder-mgmt",
+      "target": "r04",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-stakeholder-mgmt",
+      "target": "r09",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-stakeholder-mgmt",
+      "target": "r12",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-strategy",
+      "target": "r05",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-strategy",
+      "target": "r10",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-student-advising",
+      "target": "r12",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-team-leadership",
+      "target": "r02",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-team-leadership",
+      "target": "r09",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-workplace",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "skill-xfn-leadership",
+      "target": "r03",
+      "type": "USED_IN",
+      "crossLink": true
+    },
+    {
+      "source": "person",
+      "target": "loc-ma",
+      "type": "WORKED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "person",
+      "target": "loc-nrw",
+      "type": "WORKED_IN",
+      "crossLink": false
+    },
+    {
+      "source": "person",
+      "target": "loc-ny",
+      "type": "WORKED_IN",
+      "crossLink": false
+    }
+  ]
+}
