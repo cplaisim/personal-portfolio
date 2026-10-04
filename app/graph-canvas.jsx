@@ -51,6 +51,11 @@ const radiusByKind = {
 // rings makes it settle into the hierarchy instead of a hairball.
 const ringRadius = [0, 150, 430, 290, 390];
 
+// Below this width the hero covers the whole screen, so the graph is framed
+// across the full viewport. Above it, the graph is framed in the right half so
+// it sits beside the hero copy instead of behind it.
+const WIDE_BREAKPOINT = 900;
+
 function endpointId(endpoint) {
   return typeof endpoint === 'object' && endpoint !== null ? endpoint.id : endpoint;
 }
@@ -148,9 +153,11 @@ export default function GraphCanvas({ graph, theme = 'dark', showCrossLinks = tr
   // Zooming out is capped at "the whole graph, plus that margin". Derived from
   // the live node bounds rather than a fixed number, so it stays correct after
   // a resize or after nodes have been dragged outward.
-  const recomputeMinZoom = useCallback(() => {
-    const fg = graphRef.current;
-    if (!fg || size.width < 2 || size.height < 2) return;
+  // Where the laid-out graph should sit: the zoom that fits it, and the graph
+  // point to centre on. On wide screens the graph is fitted into the right half
+  // and its centre is shifted so it lands in that half's middle.
+  const graphFrame = useCallback(() => {
+    if (size.width < 2 || size.height < 2) return null;
 
     let minX = Infinity;
     let maxX = -Infinity;
@@ -165,18 +172,46 @@ export default function GraphCanvas({ graph, theme = 'dark', showCrossLinks = tr
       minY = Math.min(minY, node.y - r);
       maxY = Math.max(maxY, node.y + r);
     }
-    if (!Number.isFinite(minX)) return;
+    if (!Number.isFinite(minX)) return null;
 
+    const wide = size.width >= WIDE_BREAKPOINT;
+    const areaWidth = wide ? size.width * 0.5 : size.width;
     const fit = Math.min(
-      (size.width - edgeMargin * 2) / Math.max(maxX - minX, 1),
+      (areaWidth - edgeMargin * 2) / Math.max(maxX - minX, 1),
       (size.height - edgeMargin * 2) / Math.max(maxY - minY, 1),
     );
-    if (!Number.isFinite(fit) || fit <= 0) return;
+    if (!Number.isFinite(fit) || fit <= 0) return null;
 
-    setMinZoom(fit);
-    // Already zoomed out past the new floor: ease back to it.
-    if (fg.zoom() < fit) fg.zoom(fit, 260);
+    // Centring on a point moves the graph; shift that point so the bounds'
+    // centre lands a quarter of the viewport right of the middle.
+    const offset = wide ? (size.width * 0.25) / fit : 0;
+    return {
+      fit,
+      cx: (minX + maxX) / 2 - offset,
+      cy: (minY + maxY) / 2,
+    };
   }, [data.nodes, edgeMargin, size.width, size.height]);
+
+  const recomputeMinZoom = useCallback(() => {
+    const fg = graphRef.current;
+    const frame = graphFrame();
+    if (!fg || !frame) return;
+
+    setMinZoom(frame.fit);
+    // Already zoomed out past the new floor: ease back to it.
+    if (fg.zoom() < frame.fit) fg.zoom(frame.fit, 260);
+  }, [graphFrame]);
+
+  const frameGraph = useCallback(
+    (ms) => {
+      const fg = graphRef.current;
+      const frame = graphFrame();
+      if (!fg || !frame) return;
+      fg.zoom(frame.fit, ms);
+      fg.centerAt(frame.cx, frame.cy, ms);
+    },
+    [graphFrame],
+  );
 
   // Re-derive the floor whenever the viewport changes size.
   useEffect(() => {
@@ -332,7 +367,7 @@ export default function GraphCanvas({ graph, theme = 'dark', showCrossLinks = tr
           d3AlphaDecay={0.028}
           d3VelocityDecay={0.32}
           onEngineStop={() => {
-            graphRef.current?.zoomToFit(600, edgeMargin);
+            frameGraph(600);
             // Let the fit animation land before reading the zoom back.
             setTimeout(recomputeMinZoom, 650);
           }}

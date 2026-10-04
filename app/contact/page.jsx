@@ -9,10 +9,12 @@ export default function ContactPage() {
   return (
     <main className="contact-shell">
       <header className="topbar">
-        <Link className="wordmark" href="/" aria-label="Charles Plaisimond home">
-          <span className="wordmark-mark">CP</span>
-          <span>Charles Plaisimond</span>
-        </Link>
+        <div className="topbar-start">
+          <Link className="wordmark" href="/" aria-label="Charles Plaisimond home">
+            <span className="wordmark-mark">CP</span>
+            <span>Charles Plaisimond</span>
+          </Link>
+        </div>
         <nav aria-label="Main navigation">
           <Link href="/#about">About</Link>
           <ThemeToggle theme={theme} onToggle={toggle} />
